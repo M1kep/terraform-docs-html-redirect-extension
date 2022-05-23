@@ -3,19 +3,9 @@
   "name": "Terraform Docs .html Redirect",
   "description": "Redirect requests ending with .html to the non .htlm version on the Terraform Docs website",
   "short_name": "TF Docs .htlm Redirect",
-  "permissions": ["webRequest", "webRequestBlocking", "https://registry.terraform.io/providers/*/*/latest/docs/*"],
-  "icons" : {
-    "48": "icons/Icon_48x48.png",
-    "128": "icons/Icon_128x128.png"
-  },
-  "browser_action": {
-    "default_title": "TF Docs Fix",
-    "default_icon": "icons/Icon_38x38.png",
-    "default_popup": "popup.html"
-  },
-  "options_ui": {
-    "page": "options.html",
-    "open_in_tab": true
-  }, ,
-  "manifest_version": 2
+  "permissions": ["declarativeNetRequestWithHostAccess"],
+  "host_permissions": [
+    "https://registry.terraform.io/providers/*/*/latest/docs/*"
+  ],
+  "manifest_version": 3
 }

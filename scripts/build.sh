@@ -2,11 +2,11 @@
 mkdir -p dist/chrome/js
 mkdir -p dist/firefox/js
 
-background=dist/chrome/js/background.js
+worker=dist/chrome/js/worker.js
 
-rollup src/background.js --file $background
+rollup src/worker.js --file $worker
 
-\cp -f $background dist/firefox/js/background.js
+\cp -f $worker dist/firefox/js/worker.js
 
 jq -s '.[0] * .[1]' manifest.json manifest_chrome.json > dist/chrome/manifest.json
 jq -s '.[0] * .[1]' manifest.json manifest_firefox.json > dist/firefox/manifest.json
