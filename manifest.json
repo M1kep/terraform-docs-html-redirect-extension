@@ -1,11 +1,5 @@
 {
-  "version": "2.3.1",
+  "version": "0.1.2",
   "name": "Terraform Docs .html Redirect",
-  "description": "Redirect requests ending with .html to the non .htlm version on the Terraform Docs website",
-  "short_name": "TF Docs .htlm Redirect",
-  "permissions": ["declarativeNetRequestWithHostAccess"],
-  "host_permissions": [
-    "https://registry.terraform.io/providers/*/*/latest/docs/*"
-  ],
-  "manifest_version": 3
+  "description": "Redirect requests ending with .html to the non .html version on the Terraform Docs website"
 }

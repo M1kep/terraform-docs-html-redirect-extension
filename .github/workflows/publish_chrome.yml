@@ -1,0 +1,30 @@
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+    paths:
+      - src/chrome/**
+      - manifest.json
+      - manifest_chrome.json
+
+jobs:
+  publish:
+    name: Publish to Chrome Webstore
+    runs-on: ubuntu-latest
+    steps:
+      - name: Auth to Webstore
+        env:
+          CLIENT_ID: ${{ secrets.CHROME_CLIENT_ID }}
+          CLIENT_SECRET: ${{ secrets.CHROME_CLIENT_SECRET }}
+          REFRESH_TOKEN: ${{ secrets.REFRESH_TOKEN }}
+        run: |
+          REFRESH_TOKEN=yarn run chrome-webstore-manager refresh_token --client_id $CLIENT_ID --client_secret $CLIENT_SECRET --refresh_token $REFRESH_TOKEN
+          echo "::set-output name=ACCESS_TOKEN::$REFRESH_TOKEN"
+        id: chrome-auth
+
+      - name: Update Extension
+        env:
+          WEBSTORE_TOKEN: ${{ steps.chrome-auth.ACCESS_TOKEN }}
+        run: |
+          yarn run udpate-chrome-extension

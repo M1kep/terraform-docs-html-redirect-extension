@@ -1,0 +1,1 @@
+yarn run chrome-webstore-manager token --client_id $CLIENT_ID --client_secret $CLIENT_SECRET
